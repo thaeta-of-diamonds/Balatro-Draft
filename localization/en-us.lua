@@ -47,18 +47,19 @@ return {
                 text = {
                     "Start run with no deck",
                     "and {C:attention}#1# {C:parcel,T:tag_draft_slimsealedtag}Slim Sealed Tag{}",
-                    "After defeating each","{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
+                    "After defeating each",
+                    "{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
                 },
             },
         },
         Joker = {
-            
+
         },
         Enhanced = {
-            
+
         },
         Tarot = {
-            
+
         },
         Spectral = {
             c_draft_boon = {
@@ -885,56 +886,58 @@ return {
             },
         },
         Sleeve = {
-			sleeve_draft_draftsleeve = {
-				name = "Draft Sleeve",
-				text = {
+            sleeve_draft_draftsleeve = {
+                name = "Draft Sleeve",
+                text = {
                     "Start run with no deck",
                     "and {C:attention}#1#{} {C:packet,T:tag_draft_drafttag}Draft Tags{}"
-				},
-			},
-			sleeve_draft_draftsleeve_alt = {
-				name = "Draft Sleeve",
-				text = {
+                },
+            },
+            sleeve_draft_draftsleeve_alt = {
+                name = "Draft Sleeve",
+                text = {
                     "Start run with",
                     "{C:attention}#1#{} {C:packet,T:tag_draft_megadrafttag}Mega Draft Tags{}",
                     "too"
-				},
-			},
-			sleeve_draft_sealedsleeve = {
-				name = "Sealed Sleeve",
-				text = {
+                },
+            },
+            sleeve_draft_sealedsleeve = {
+                name = "Sealed Sleeve",
+                text = {
                     "Start run with no deck",
                     "and {C:attention}#1#{} {C:parcel,T:tag_draft_sealedtag}Sealed Tags{}"
-				},
-			},
-			sleeve_draft_sealedsleeve_alt = {
-				name = "Sealed Sleeve",
-				text = {
+                },
+            },
+            sleeve_draft_sealedsleeve_alt = {
+                name = "Sealed Sleeve",
+                text = {
                     "Start run with",
                     "{C:attention}#1#{} {C:parcel,T:tag_draft_slimsealedtag}Slim Sealed Tag{}",
                     "too"
-				},
-			},
+                },
+            },
             sleeve_draft_clippersleeve = {
-				name = "Rending Sleeve",
-				text = {
+                name = "Rending Sleeve",
+                text = {
                     "Start run with {C:attention}#1#{} {C:clipper,T:tag_draft_clippertag}Cleaving Tags{}"
-				},
-			},
-			sleeve_draft_evolvingsleeve = {
-				name = "Evolving Sleeve",
-				text = {
+                },
+            },
+            sleeve_draft_evolvingsleeve = {
+                name = "Evolving Sleeve",
+                text = {
                     "Start run with no deck",
                     "and {C:attention}#1# {C:parcel,T:tag_draft_slimsealedtag}Slim Sealed Tag{}",
-                    "After defeating each","{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
-				},
-			},
-			sleeve_draft_evolvingsleeve_alt = {
-				name = "Evolving Sleeve",
-				text = {
-                    "After defeating each","{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
-				},
-			},
+                    "After defeating each",
+                    "{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
+                },
+            },
+            sleeve_draft_evolvingsleeve_alt = {
+                name = "Evolving Sleeve",
+                text = {
+                    "After defeating each",
+                    "{C:attention}Boss Blind{}, gain a {C:packet,T:tag_draft_drafttag}Draft Tag{}"
+                },
+            },
         },
         Other = {
             p_draft_pack = {
@@ -997,7 +1000,7 @@ return {
     },
     misc = {
         suits_singular = {
-            
+
         },
         suits_plural = {
 
@@ -1012,7 +1015,7 @@ return {
             k_multisuitmods = "Suit Mods",
             k_unavailable = "Unavailable",
             mode_not_found_error = "Mode could not be found! Did you remove its mod?",
-            
+
             neutral_packet_collation = "Neutral Packet Collation",
             neutral_packet_collation_desc = {
                 "Draft Crates will always contain",

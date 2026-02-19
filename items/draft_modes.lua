@@ -20,7 +20,7 @@ Draft.Draft_Mode = SMODS.Center:extend {
 
 function Draft.Draft_Mode:get_name()
     if self:is_unlocked() then
-        return localize{type = "name_text", set = self.set, key = self.key}
+        return localize { type = "name_text", set = self.set, key = self.key }
     else
         return localize('k_locked')
     end
@@ -62,55 +62,55 @@ Draft.Draft_Mode {
 }
 
 Draft.Draft_Mode({
-	key = "draft",
-	name = "draft-mode-draft",
-	atlas = "pack_atlas",
-	pos = { x = 0, y = 0 },
-	config = { num_packs = 10 },
-	unlocked = true,
-	loc_vars = function(self)
-		return { key = self.key, vars = { self.config.num_packs } }
-	end,
-	apply = function(self)
-		G.E_MANAGER:add_event(Event({
-			func = function()
-				for i = #G.playing_cards, 1, -1 do
-					G.playing_cards[i]:remove()
-				end
-				G.GAME.starting_deck_size = #G.playing_cards
-				for i = 1, self.config.num_packs, 1 do
-					add_tag(Tag('tag_draft_drafttag'))
-				end
-				return true
-			end
-		}))
-	end,
+    key = "draft",
+    name = "draft-mode-draft",
+    atlas = "pack_atlas",
+    pos = { x = 0, y = 0 },
+    config = { num_packs = 10 },
+    unlocked = true,
+    loc_vars = function(self)
+        return { key = self.key, vars = { self.config.num_packs } }
+    end,
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = #G.playing_cards, 1, -1 do
+                    G.playing_cards[i]:remove()
+                end
+                G.GAME.starting_deck_size = #G.playing_cards
+                for i = 1, self.config.num_packs, 1 do
+                    add_tag(Tag('tag_draft_drafttag'))
+                end
+                return true
+            end
+        }))
+    end,
 })
 
 Draft.Draft_Mode({
-	key = "sealed",
-	name = "draft-mode-sealed",
-	atlas = "pack_atlas",
-	pos = { x = 0, y = 0 },
-	config = { num_packs = 1 },
-	unlocked = true,
-	loc_vars = function(self)
-		return { key = self.key, vars = { self.config.num_packs } }
-	end,
-	apply = function(self)
-		G.E_MANAGER:add_event(Event({
-			func = function()
-				for i = #G.playing_cards, 1, -1 do
-					G.playing_cards[i]:remove()
-				end
-				G.GAME.starting_deck_size = #G.playing_cards
-				for i = 1, self.config.num_packs, 1 do
-					add_tag(Tag('tag_draft_sealedtag'))
-				end
-				return true
-			end
-		}))
-	end,
+    key = "sealed",
+    name = "draft-mode-sealed",
+    atlas = "pack_atlas",
+    pos = { x = 0, y = 0 },
+    config = { num_packs = 1 },
+    unlocked = true,
+    loc_vars = function(self)
+        return { key = self.key, vars = { self.config.num_packs } }
+    end,
+    apply = function(self)
+        G.E_MANAGER:add_event(Event({
+            func = function()
+                for i = #G.playing_cards, 1, -1 do
+                    G.playing_cards[i]:remove()
+                end
+                G.GAME.starting_deck_size = #G.playing_cards
+                for i = 1, self.config.num_packs, 1 do
+                    add_tag(Tag('tag_draft_sealedtag'))
+                end
+                return true
+            end
+        }))
+    end,
 })
 
 -- Local Functions
@@ -174,18 +174,18 @@ function G.UIDEF.draft_mode_description(mode_key, minw)
     local mode_name = ""
     if mode_center then
         mode_name = mode_center:get_name()
-        mode_center:generate_ui({}, nil, ret_nodes, nil, {name = {}})
+        mode_center:generate_ui({}, nil, ret_nodes, nil, { name = {} })
     else
         mode_name = "ERROR"
         ret_nodes = {
-            {{
-                config = { scale= 0.32, colour = G.C.BLACK, text= localize('mode_not_found_error'), },
-                n= 1,
-            }},
-            {{
-                config = { scale= 0.32, colour = G.C.BLACK, text= "(DEBUG: key = '" .. tprint(G.viewed_mode) .. "')", },
-                n= 1,
-            }},
+            { {
+                config = { scale = 0.32, colour = G.C.BLACK, text = localize('mode_not_found_error'), },
+                n = 1,
+            } },
+            { {
+                config = { scale = 0.32, colour = G.C.BLACK, text = "(DEBUG: key = '" .. tprint(G.viewed_mode) .. "')", },
+                n = 1,
+            } },
         }
     end
 
@@ -301,7 +301,7 @@ end
 local old_Game_init_game_object = Game.init_game_object
 function Game:init_game_object(...)
     local output = old_Game_init_game_object(self, ...)
-    local is_challenge = Draft.game_args.challenge and Draft.game_args.challenge.id  -- HouseRules compat
+    local is_challenge = Draft.game_args.challenge and Draft.game_args.challenge.id -- HouseRules compat
     if not is_challenge then
         output.draft_selected_mode = G.viewed_mode or "draft_mode"
     elseif is_challenge and Draft.game_args.challenge.draft_mode then
@@ -325,8 +325,9 @@ function G.UIDEF.run_setup_option(_type)
                 n = G.UIT.R,
                 config = { align = "cm", padding = 0.05, minh = 1.65 },
                 nodes = {
-                    {n=G.UIT.O,
-                     config={id = nil, func = 'RUN_SETUP_check_draft_mode', insta_func = true, object = Moveable() }
+                    {
+                        n = G.UIT.O,
+                        config = { id = nil, func = 'RUN_SETUP_check_draft_mode', insta_func = true, object = Moveable() }
                     }
                 }
             })

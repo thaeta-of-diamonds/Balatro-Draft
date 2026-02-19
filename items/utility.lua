@@ -1,9 +1,9 @@
 function dissect(var)
     for k, v in pairs(var) do
-        print("--"..tostring(k).."--")
+        print("--" .. tostring(k) .. "--")
         if type(v) == "table" then
             for key, value in pairs(v) do
-                print(tostring(key).."="..tostring(value))
+                print(tostring(key) .. "=" .. tostring(value))
             end
         else
             print(tostring(v))
@@ -19,13 +19,13 @@ function G.FUNCS.draftSay(message, level)
 end
 
 G.FUNCS.format_cost = function(num)
-    local str = "$"..tostring(math.abs(num))
+    local str = "$" .. tostring(math.abs(num))
     if num == 0 then
         return ""
     elseif num > 0 then
-        str = "+"..str
+        str = "+" .. str
     else
-        str = "-"..str
+        str = "-" .. str
     end
     return str
 end
@@ -73,7 +73,7 @@ G.FUNCS.create_playing_card_in_deck_alt = function(t)
     pseudoshuffle(possibilities, pseudoseed('draft_create'))
     local i = 1
     while true do
-        local front = G.P_CARDS[ possibilities[(i % #possibilities) + 1] ]
+        local front = G.P_CARDS[possibilities[(i % #possibilities) + 1]]
         if suitset[front.suit] ~= nil and rankset[front.value] ~= nil then
             local center
             if t.enhancements then
@@ -82,8 +82,8 @@ G.FUNCS.create_playing_card_in_deck_alt = function(t)
                 center = G.P_CENTERS.c_base
             end
             local _card = create_playing_card({
-            front = front,
-            center = center
+                front = front,
+                center = center
             }, G.deck, nil, i ~= 1, { G.C.SECONDARY_SET.Packet })
             playing_card_joker_effects(cards)
             return _card
@@ -93,16 +93,16 @@ G.FUNCS.create_playing_card_in_deck_alt = function(t)
 end
 
 G.FUNCS.get_next_rank = function(rank)
-	local behavior = rank.strength_effect or { fixed = 1, ignore = false, random = false }
-	local new_rank
-	if behavior.ignore or not next(rank.next) then
-		return true
-	elseif behavior.random then
-		new_rank = pseudorandom_element(rank.next, pseudoseed('next_rank'))
-	else
-		local ii = (behavior.fixed and rank.next[behavior.fixed]) and behavior.fixed or 1
-		new_rank = rank.next[ii]
-	end
+    local behavior = rank.strength_effect or { fixed = 1, ignore = false, random = false }
+    local new_rank
+    if behavior.ignore or not next(rank.next) then
+        return true
+    elseif behavior.random then
+        new_rank = pseudorandom_element(rank.next, pseudoseed('next_rank'))
+    else
+        local ii = (behavior.fixed and rank.next[behavior.fixed]) and behavior.fixed or 1
+        new_rank = rank.next[ii]
+    end
     return SMODS.Ranks[new_rank]
 end
 
@@ -111,13 +111,13 @@ function compact(x)
     return { value }
 end
 
-G.FUNCS.filter_suits = function (t)
+G.FUNCS.filter_suits = function(t)
     t = t or {}
     local ret = {}
     for key, value in pairs(SMODS.Suits) do
         local valid = true
         if t.only_vanilla then
-            if key ~= "Spades" and key ~= "Hearts" and key ~="Clubs" and key ~= "Diamonds" then
+            if key ~= "Spades" and key ~= "Hearts" and key ~= "Clubs" and key ~= "Diamonds" then
                 valid = false
                 --G.FUNCS.draftsay(key.." excluded: Not vanilla", "TRACE")
             end
@@ -151,7 +151,8 @@ G.FUNCS.filter_suits = function (t)
         if valid then ret[key] = value end
     end
     if ret == {} then
-        G.FUNCS.draftSay("Please check your filter_suits arguments; no valid suits remain! Returning vanilla suits.", "ERROR")
+        G.FUNCS.draftSay("Please check your filter_suits arguments; no valid suits remain! Returning vanilla suits.",
+            "ERROR")
         ret = {
             SMODS.Suits["Hearts"],
             SMODS.Suits["Diamonds"],
@@ -162,7 +163,7 @@ G.FUNCS.filter_suits = function (t)
     return ret
 end
 
-G.FUNCS.not_hidden_suits = function ()
+G.FUNCS.not_hidden_suits = function()
     G.FUNCS.draftSay("not_hidden_suits is deprecated, use filter_suits instead!", "WARN ")
     local ret = {}
     for key, value in pairs(SMODS.Suits) do
@@ -249,7 +250,7 @@ G.FUNCS.create_playing_cards_in_deck_alt = function(t)
     pseudoshuffle(possibilities, pseudoseed('draft_create'))
     local i = 1
     while current_amount < t.amount do
-        local front = G.P_CARDS[ possibilities[(i % #possibilities) + 1] ]
+        local front = G.P_CARDS[possibilities[(i % #possibilities) + 1]]
         if suitset[front.suit] ~= nil and rankset[front.value] ~= nil then
             local center
             if t.enhancements then
@@ -262,8 +263,8 @@ G.FUNCS.create_playing_cards_in_deck_alt = function(t)
             end
             current_amount = current_amount + 1
             actual_cards[current_amount] = create_playing_card({
-            front = front,
-            center = center
+                front = front,
+                center = center
             }, G.deck, nil, i ~= 1, { G.C.SECONDARY_SET.Packet })
             cards[current_amount] = true
         end
@@ -314,14 +315,15 @@ G.FUNCS.create_playing_cards_in_deck_balanced = function(t)
         local possibilities = {}
         for key, val in pairs(t.ranks) do
             if t.special_ranks and special_rankset[val] ~= nil then
-                
+
             else
                 table.insert(possibilities, val)
             end
         end
         pseudoshuffle(possibilities, pseudoseed('draft_create'))
         for i = 1, t.additional_amount, 1 do
-            amount_per_rank[possibilities[(i % #possibilities) + 1]] = amount_per_rank[possibilities[(i % #possibilities) + 1]] + 1
+            amount_per_rank[possibilities[(i % #possibilities) + 1]] = amount_per_rank
+            [possibilities[(i % #possibilities) + 1]] + 1
         end
     end
     for key, value in pairs(t.ranks) do
@@ -335,7 +337,7 @@ G.FUNCS.create_playing_cards_in_deck_balanced = function(t)
         local current_amount = 0
         local i = 1
         while current_amount < amount_per_rank[value] do
-            local front = G.P_CARDS[ possibilities[(i % #possibilities) + 1] ]
+            local front = G.P_CARDS[possibilities[(i % #possibilities) + 1]]
             if suitset[front.suit] ~= nil then
                 local center
                 if t.enhancements then
@@ -350,8 +352,8 @@ G.FUNCS.create_playing_cards_in_deck_balanced = function(t)
                 end
                 current_amount = current_amount + 1
                 actual_cards[current_amount] = create_playing_card({
-                front = front,
-                center = center
+                    front = front,
+                    center = center
                 }, G.deck, nil, i ~= 1, { G.C.SECONDARY_SET.Parcel })
                 cards[current_amount] = true
             end
@@ -397,7 +399,7 @@ G.FUNCS.create_playing_cards_in_deck_straight = function(t)
         local current_amount = 0
         local j = 1
         while current_amount < 1 do
-            local front = G.P_CARDS[ possibilities[(j % #possibilities) + 1] ]
+            local front = G.P_CARDS[possibilities[(j % #possibilities) + 1]]
             if suitset[front.suit] ~= nil then
                 local center
                 if t.enhancements then
@@ -424,65 +426,75 @@ end
 
 G.FUNCS.packet_effect = function(card, t)
     local created_cards
-    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('timpani')
-        card:juice_up(0.3, 0.5)
-        if card.ability.extra.cost ~= 0 then
-            ease_dollars(card.ability.extra.cost)
-        end
-        if not t.nocards then 
-            t.amount = card.ability.extra.amount
-            if t.straight then
-                t.base_amount = card.ability.extra.amount
-                created_cards = G.FUNCS.create_playing_cards_in_deck_straight(t)
-            elseif t.balanced then
-                created_cards = G.FUNCS.create_playing_cards_in_deck_balanced(t)
-            else
-                created_cards = G.FUNCS.create_playing_cards_in_deck_alt(t)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+            play_sound('timpani')
+            card:juice_up(0.3, 0.5)
+            if card.ability.extra.cost ~= 0 then
+                ease_dollars(card.ability.extra.cost)
             end
-            if t.link then
-                link_cards(created_cards, card.key)
+            if not t.nocards then
+                t.amount = card.ability.extra.amount
+                if t.straight then
+                    t.base_amount = card.ability.extra.amount
+                    created_cards = G.FUNCS.create_playing_cards_in_deck_straight(t)
+                elseif t.balanced then
+                    created_cards = G.FUNCS.create_playing_cards_in_deck_balanced(t)
+                else
+                    created_cards = G.FUNCS.create_playing_cards_in_deck_alt(t)
+                end
+                if t.link then
+                    link_cards(created_cards, card.key)
+                end
             end
+            if G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
+                G.GAME.starting_deck_size = #G.playing_cards
+            end
+            return true
         end
-        if G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
-            G.GAME.starting_deck_size = #G.playing_cards
-        end
-        return true end }))
+    }))
     delay(0.6)
 end
 
 G.FUNCS.parcel_effect = function(card, t)
-    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('timpani')
-        card:juice_up(0.3, 0.5)
-        if card.ability.extra.cost ~= 0 then
-            ease_dollars(card.ability.extra.cost)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+            play_sound('timpani')
+            card:juice_up(0.3, 0.5)
+            if card.ability.extra.cost ~= 0 then
+                ease_dollars(card.ability.extra.cost)
+            end
+            if not t.nocards then
+                G.FUNCS.create_playing_cards_in_deck_balanced(t)
+            end
+            if G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
+                G.GAME.starting_deck_size = #G.playing_cards
+            end
+            return true
         end
-        if not t.nocards then
-            G.FUNCS.create_playing_cards_in_deck_balanced(t)
-        end
-        if G.STATE == G.STATES.SMODS_BOOSTER_OPENED then
-            G.GAME.starting_deck_size = #G.playing_cards
-        end
-        return true end }))
+    }))
     delay(0.6)
 end
 
 G.FUNCS.destroy_cards = function(cards)
-	for i=1, #cards do
-		if cards[i].ability.name == 'Glass Card' then 
-			cards[i]:shatter()
-		else
-			cards[i]:start_dissolve(nil, i == 1)
-		end
-	end
-	for i=1, #G.jokers.cards do
-		G.jokers.cards[i]:calculate_joker({remove_playing_cards = true, removed = cards})
-	end
+    for i = 1, #cards do
+        if cards[i].ability.name == 'Glass Card' then
+            cards[i]:shatter()
+        else
+            cards[i]:start_dissolve(nil, i == 1)
+        end
+    end
+    for i = 1, #G.jokers.cards do
+        G.jokers.cards[i]:calculate_joker({ remove_playing_cards = true, removed = cards })
+    end
 end
 
 G.FUNCS.destroy_cards_in_hand = function(t)
-	local targets = {}
+    local targets = {}
     if t.amount_selected then
         for index, value in ipairs(G.hand.highlighted) do
             if not value.ability.eternal then
@@ -499,13 +511,14 @@ G.FUNCS.destroy_cards_in_hand = function(t)
             end
             for index, value in ipairs(G.hand.cards) do
                 if not selected[value] then
-                    temp_hand[#temp_hand+1] = value
+                    temp_hand[#temp_hand + 1] = value
                 end
             end
         else
-            for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand+1] = v end
+            for k, v in ipairs(G.hand.cards) do temp_hand[#temp_hand + 1] = v end
         end
-        table.sort(temp_hand, function (a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
+        table.sort(temp_hand,
+            function(a, b) return not a.playing_card or not b.playing_card or a.playing_card < b.playing_card end)
         pseudoshuffle(temp_hand, pseudoseed('draft_destroy'))
 
         local total_added = 0
@@ -564,47 +577,52 @@ G.FUNCS.destroy_cards_in_hand = function(t)
     end
     local cards_to_destroy = {}
     for key, value in pairs(targets) do
-        cards_to_destroy[#cards_to_destroy+1] = key
+        cards_to_destroy[#cards_to_destroy + 1] = key
     end
     G.FUNCS.destroy_cards(cards_to_destroy)
 end
 
 G.FUNCS.clipper_effect = function(card, t)
-    G.E_MANAGER:add_event(Event({trigger = 'after', delay = 0.4, func = function()
-        play_sound('timpani')
-        card:juice_up(0.3, 0.5)
-        if card.ability.extra.cost ~= 0 then
-            ease_dollars(card.ability.extra.cost)
+    G.E_MANAGER:add_event(Event({
+        trigger = 'after',
+        delay = 0.4,
+        func = function()
+            play_sound('timpani')
+            card:juice_up(0.3, 0.5)
+            if card.ability.extra.cost ~= 0 then
+                ease_dollars(card.ability.extra.cost)
+            end
+            G.FUNCS.destroy_cards_in_hand(t)
+            G.hand:unhighlight_all()
+            return true
         end
-        G.FUNCS.destroy_cards_in_hand(t)
-        G.hand:unhighlight_all()
-        return true end }))
+    }))
     delay(0.6)
 end
 
 --Localization colors
 local lc = loc_colour
 function loc_colour(_c, _default)
-	  if not G.ARGS.LOC_COLOURS then
-		  lc()
-	  end
-	  G.ARGS.LOC_COLOURS.heart = G.C.SUITS.Hearts
-	  G.ARGS.LOC_COLOURS.diamond = G.C.SUITS.Diamonds
-	  G.ARGS.LOC_COLOURS.spade = G.C.SUITS.Spades
-	  G.ARGS.LOC_COLOURS.club = G.C.SUITS.Clubs
-      --[[if MagicTheJokering then
+    if not G.ARGS.LOC_COLOURS then
+        lc()
+    end
+    G.ARGS.LOC_COLOURS.heart = G.C.SUITS.Hearts
+    G.ARGS.LOC_COLOURS.diamond = G.C.SUITS.Diamonds
+    G.ARGS.LOC_COLOURS.spade = G.C.SUITS.Spades
+    G.ARGS.LOC_COLOURS.club = G.C.SUITS.Clubs
+    --[[if MagicTheJokering then
         if MagicTheJokering.config.include_clover_suit then
             G.ARGS.LOC_COLOURS.clover = G.C.SUITS[suit_clovers.key]
         end
 	    G.ARGS.LOC_COLOURS.Magic = G.C.SET.Magic
       end]]
-	  G.ARGS.LOC_COLOURS.packet = G.C.SET.Packet
-	  G.ARGS.LOC_COLOURS.parcel = G.C.SET.Parcel
-	  G.ARGS.LOC_COLOURS.clipper = G.C.SET.Clipper
-	  return lc(_c, _default)
+    G.ARGS.LOC_COLOURS.packet = G.C.SET.Packet
+    G.ARGS.LOC_COLOURS.parcel = G.C.SET.Parcel
+    G.ARGS.LOC_COLOURS.clipper = G.C.SET.Clipper
+    return lc(_c, _default)
 end
 
-G.FUNCS.suit_dist = function (t)
+G.FUNCS.suit_dist = function(t)
     local suit_table = G.FUNCS.filter_suits(t)
     local suits = {}
     for key, value in pairs(suit_table) do
@@ -682,7 +700,7 @@ G.FUNCS.least_popular_suit = function(allow_hidden)
     return ret
 end
 
-G.FUNCS.rank_dist = function ()
+G.FUNCS.rank_dist = function()
     local ranks = {}
     for key, value in pairs(SMODS.Ranks) do
         ranks[value] = 0
@@ -760,7 +778,7 @@ end
 
 G.FUNCS.can_skip_draft_booster = function(e)
     if G.pack_cards and
-    (G.STATE == G.STATES.SMODS_BOOSTER_OPENED or G.STATE == G.STATES.PLANET_PACK or G.STATE == G.STATES.STANDARD_PACK or G.STATE == G.STATES.BUFFOON_PACK or (G.hand and (G.hand.cards[1] or (G.hand.config.card_limit <= 0)))) then 
+        (G.STATE == G.STATES.SMODS_BOOSTER_OPENED or G.STATE == G.STATES.PLANET_PACK or G.STATE == G.STATES.STANDARD_PACK or G.STATE == G.STATES.BUFFOON_PACK or (G.hand and (G.hand.cards[1] or (G.hand.config.card_limit <= 0)))) then
         e.config.colour = G.C.RED
         e.config.button = 'skip_draft_booster'
     else
@@ -772,10 +790,10 @@ end
 G.FUNCS.skip_draft_booster = function(e)
     ease_dollars(SMODS.OPENED_BOOSTER.ability.skip_cost)
     for i = 1, #G.jokers.cards do
-      G.jokers.cards[i]:calculate_joker({skipping_booster = true})
+        G.jokers.cards[i]:calculate_joker({ skipping_booster = true })
     end
     G.FUNCS.end_consumeable(e)
-  end
+end
 
 function G.FUNCS.get_current_deck()
     if Galdur and Galdur.config.use and Galdur.run_setup.choices.deck then

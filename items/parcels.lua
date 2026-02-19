@@ -1,7 +1,7 @@
 SMODS.ConsumableType {
     object_type = "ConsumableType",
     key = 'Parcel',
-    collection_rows = { 4,4 },
+    collection_rows = { 4, 4 },
     primary_colour = HEX("d78989"),
     secondary_colour = HEX("562a2a"),
     loc_txt = {
@@ -35,11 +35,11 @@ local betterredthandead = SMODS.Consumable {
     set = "Parcel",
     name = "draft-betterredthandead",
     key = "betterredthandead",
-    pos = {x = 1, y = 0},
+    pos = { x = 1, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -51,15 +51,15 @@ local betterredthandead = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Hearts"],SMODS.Suits["Diamonds"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Hearts"], SMODS.Suits["Diamonds"] }
         })
     end,
 }
@@ -68,11 +68,11 @@ local thedarkside = SMODS.Consumable {
     set = "Parcel",
     name = "draft-thedarkside",
     key = "thedarkside",
-    pos = {x = 2, y = 0},
+    pos = { x = 2, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -84,15 +84,15 @@ local thedarkside = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Spades"],SMODS.Suits["Clubs"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Spades"], SMODS.Suits["Clubs"] }
         })
     end,
 }
@@ -101,11 +101,11 @@ local checkered = SMODS.Consumable {
     set = "Parcel",
     name = "draft-checkered",
     key = "checkered",
-    pos = {x = 1, y = 1},
+    pos = { x = 1, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -117,15 +117,15 @@ local checkered = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Hearts"],SMODS.Suits["Spades"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Hearts"], SMODS.Suits["Spades"] }
         })
     end,
 }
@@ -134,11 +134,11 @@ local chessboard = SMODS.Consumable {
     set = "Parcel",
     name = "draft-chessboard",
     key = "chessboard",
-    pos = {x = 2, y = 1},
+    pos = { x = 2, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -150,15 +150,15 @@ local chessboard = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Clubs"],SMODS.Suits["Diamonds"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Clubs"], SMODS.Suits["Diamonds"] }
         })
     end,
 }
@@ -167,11 +167,11 @@ local bloodandiron = SMODS.Consumable {
     set = "Parcel",
     name = "draft-bloodandiron",
     key = "bloodandiron",
-    pos = {x = 3, y = 1},
+    pos = { x = 3, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -183,15 +183,15 @@ local bloodandiron = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Hearts"],SMODS.Suits["Clubs"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Hearts"], SMODS.Suits["Clubs"] }
         })
     end,
 }
@@ -200,11 +200,11 @@ local digginanddrillin = SMODS.Consumable {
     set = "Parcel",
     name = "draft-digginanddrillin",
     key = "digginanddrillin",
-    pos = {x = 4, y = 1},
+    pos = { x = 4, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, base_amount = 2}},
+    config = { extra = { cost = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount = 0
         local amount_1 = 0
@@ -216,15 +216,15 @@ local digginanddrillin = SMODS.Consumable {
                 amount_1 = amount_1 + card.ability.extra.base_amount / 2
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount, amount_1 } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            suits={SMODS.Suits["Spades"],SMODS.Suits["Diamonds"]}
+            base_amount = card.ability.extra.base_amount,
+            suits = { SMODS.Suits["Spades"], SMODS.Suits["Diamonds"] }
         })
     end,
 }
@@ -233,13 +233,13 @@ local havealltheaces = SMODS.Consumable {
     set = "Parcel",
     name = "draft-havealltheaces",
     key = "havealltheaces",
-    pos = {x = 10, y = 0},
+    pos = { x = 10, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, ace_num = 6, else_num = 2}},
+    config = { extra = { cost = 0, amount = 0, ace_num = 6, else_num = 2 } },
     loc_vars = function(self, info_queue, card)
-		local amount_ace = 0
+        local amount_ace = 0
         local amount_else = 0
         for key, value in pairs(SMODS.Ranks) do
             if value == SMODS.Ranks["Ace"] then
@@ -248,16 +248,16 @@ local havealltheaces = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.else_num
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_ace, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_ace, amount_else } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.else_num,
-            special_ranks={SMODS.Ranks["Ace"]},
-            special_amount=card.ability.extra.ace_num
+            base_amount = card.ability.extra.else_num,
+            special_ranks = { SMODS.Ranks["Ace"] },
+            special_amount = card.ability.extra.ace_num
         })
     end,
 }
@@ -266,11 +266,11 @@ local facethemusic = SMODS.Consumable {
     set = "Parcel",
     name = "draft-facethemusic",
     key = "facethemusic",
-    pos = {x = 5, y = 0},
+    pos = { x = 5, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, num_face = 4, num_rest = 2}},
+    config = { extra = { cost = 0, amount = 0, num_face = 4, num_rest = 2 } },
     loc_vars = function(self, info_queue, card)
         local amount_face = 0
         local amount_else = 0
@@ -281,17 +281,17 @@ local facethemusic = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.num_rest
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_face, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_face, amount_else } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.num_rest,
-            special_ranks=G.FUNCS.face_ranks(),
-            special_amount=card.ability.extra.num_face,
-            banned_ranks={SMODS.Ranks["Ace"]}
+            base_amount = card.ability.extra.num_rest,
+            special_ranks = G.FUNCS.face_ranks(),
+            special_amount = card.ability.extra.num_face,
+            banned_ranks = { SMODS.Ranks["Ace"] }
         })
     end,
 }
@@ -300,11 +300,11 @@ local allalone = SMODS.Consumable {
     set = "Parcel",
     name = "draft-allalone",
     key = "allalone",
-    pos = {x = 6, y = 0},
+    pos = { x = 6, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
         card.ability.extra.amount = 0
         for key, value in pairs(SMODS.Ranks) do
@@ -312,15 +312,15 @@ local allalone = SMODS.Consumable {
                 card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            banned_ranks=G.FUNCS.face_ranks()
+            base_amount = card.ability.extra.base_amount,
+            banned_ranks = G.FUNCS.face_ranks()
         })
     end,
 }
@@ -329,25 +329,25 @@ local yourreadingis = SMODS.Consumable {
     set = "Parcel",
     name = "draft-yourreadingis",
     key = "yourreadingis",
-    pos = {x = 3, y = 0},
+    pos = { x = 3, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Tag", key = "tag_charm" }
+        info_queue[#info_queue + 1] = { set = "Tag", key = "tag_charm" }
         card.ability.extra.amount = 0
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount
+            base_amount = card.ability.extra.base_amount
         })
         add_tag(Tag("tag_charm"))
     end,
@@ -357,25 +357,25 @@ local aimforthestars = SMODS.Consumable {
     set = "Parcel",
     name = "draft-aimforthestars",
     key = "aimforthestars",
-    pos = {x = 4, y = 0},
+    pos = { x = 4, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Tag", key = "tag_meteor" }
+        info_queue[#info_queue + 1] = { set = "Tag", key = "tag_meteor" }
         card.ability.extra.amount = 0
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount
+            base_amount = card.ability.extra.base_amount
         })
         add_tag(Tag("tag_meteor"))
     end,
@@ -385,25 +385,25 @@ local spectralprocession = SMODS.Consumable {
     set = "Parcel",
     name = "draft-spectralprocession",
     key = "spectralprocession",
-    pos = {x = 5, y = 1},
+    pos = { x = 5, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Tag", key = "tag_ethereal" }
+        info_queue[#info_queue + 1] = { set = "Tag", key = "tag_ethereal" }
         card.ability.extra.amount = 0
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount
+            base_amount = card.ability.extra.base_amount
         })
         add_tag(Tag("tag_ethereal"))
     end,
@@ -413,25 +413,25 @@ local investinyourself = SMODS.Consumable {
     set = "Parcel",
     name = "draft-investinyourself",
     key = "investinyourself",
-    pos = {x = 7, y = 0},
+    pos = { x = 7, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Tag", key = "tag_investment", specific_vars = {15}}
+        info_queue[#info_queue + 1] = { set = "Tag", key = "tag_investment", specific_vars = { 15 } }
         card.ability.extra.amount = 0
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount
+            base_amount = card.ability.extra.base_amount
         })
         add_tag(Tag("tag_investment"))
     end,
@@ -441,26 +441,26 @@ local overdraft = SMODS.Consumable {
     set = "Parcel",
     name = "draft-overdraft",
     key = "overdraft",
-    pos = {x = 8, y = 0},
+    pos = { x = 8, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 1, additional_amount = 7}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 1, additional_amount = 7 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue + 1] = { set = "Tag", key = "tag_draft_drafttag" }
+        info_queue[#info_queue + 1] = { set = "Tag", key = "tag_draft_drafttag" }
         card.ability.extra.amount = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
     can_use = function(self, card)
         return true
     end,
     use = function(self, card, area, copier)
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount
         })
         add_tag(Tag("tag_draft_drafttag"))
     end,
@@ -470,14 +470,14 @@ local hackstarterpack = SMODS.Consumable {
     set = "Parcel",
     name = "draft-hackstarterpack",
     key = "hackstarterpack",
-    pos = {x = 9, y = 0},
+    pos = { x = 9, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, num_hack = 3, num_rest = 2}},
+    config = { extra = { cost = 0, amount = 0, num_hack = 3, num_rest = 2 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_hack
-		local amount_hack = 0
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_hack
+        local amount_hack = 0
         local amount_else = 0
         for key, value in pairs(SMODS.Ranks) do
             if value == SMODS.Ranks["2"] or value == SMODS.Ranks["3"] or value == SMODS.Ranks["4"] or value == SMODS.Ranks["5"] then
@@ -486,9 +486,9 @@ local hackstarterpack = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.num_rest
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_hack, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_hack, amount_else } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_hack.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_hack.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -496,19 +496,20 @@ local hackstarterpack = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_hack")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.num_rest,
-            special_ranks={SMODS.Ranks["2"] , SMODS.Ranks["3"] , SMODS.Ranks["4"] , SMODS.Ranks["5"]},
-            special_amount=card.ability.extra.num_hack
+            base_amount = card.ability.extra.num_rest,
+            special_ranks = { SMODS.Ranks["2"], SMODS.Ranks["3"], SMODS.Ranks["4"], SMODS.Ranks["5"] },
+            special_amount = card.ability.extra.num_hack
         })
     end,
 }
@@ -517,14 +518,14 @@ local thefutureismeow = SMODS.Consumable {
     set = "Parcel",
     name = "draft-thefutureismeow",
     key = "thefutureismeow",
-    pos = {x = 6, y = 1},
+    pos = { x = 6, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 3}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 3 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_lucky_cat
-		local amount_seven = 0
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_lucky_cat
+        local amount_seven = 0
         local amount_else = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             if value == SMODS.Ranks["7"] then
@@ -533,9 +534,9 @@ local thefutureismeow = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.base_amount
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_seven, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_seven, amount_else } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_lucky_cat.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_lucky_cat.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -543,21 +544,22 @@ local thefutureismeow = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_lucky_cat")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount,
-            special_ranks={SMODS.Ranks["7"]},
-            special_amount=card.ability.extra.special_amount,
-            special_enhancements={G.P_CENTERS.m_lucky}
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount,
+            special_ranks = { SMODS.Ranks["7"] },
+            special_amount = card.ability.extra.special_amount,
+            special_enhancements = { G.P_CENTERS.m_lucky }
         })
     end,
 }
@@ -566,20 +568,20 @@ local stowaway = SMODS.Consumable {
     set = "Parcel",
     name = "draft-stowaway",
     key = "stowaway",
-    pos = {x = 7, y = 1},
+    pos = { x = 7, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2, additional_amount = 6}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2, additional_amount = 6 } },
     loc_vars = function(self, info_queue, card)
-		info_queue[#info_queue+1] = G.P_CENTERS.j_riff_raff
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_riff_raff
         local amount = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             amount = amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_riff_raff.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_riff_raff.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -587,18 +589,19 @@ local stowaway = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_riff_raff")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount
         })
     end,
 }
@@ -607,14 +610,14 @@ local psychichex = SMODS.Consumable {
     set = "Parcel",
     name = "draft-psychichex",
     key = "psychichex",
-    pos = {x = 8, y = 1},
+    pos = { x = 8, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 3}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 3 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_sixth_sense
-		local amount_six = 0
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_sixth_sense
+        local amount_six = 0
         local amount_else = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             if value == SMODS.Ranks["6"] then
@@ -623,9 +626,9 @@ local psychichex = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.base_amount
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_six, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_six, amount_else } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_sixth_sense.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_sixth_sense.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -633,21 +636,22 @@ local psychichex = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_sixth_sense")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount,
-            special_ranks={SMODS.Ranks["6"]},
-            special_amount=card.ability.extra.special_amount,
-            special_enhancements=G.P_CENTER_POOLS["Enhanced"]
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount,
+            special_ranks = { SMODS.Ranks["6"] },
+            special_amount = card.ability.extra.special_amount,
+            special_enhancements = G.P_CENTER_POOLS["Enhanced"]
         })
     end,
 }
@@ -656,14 +660,14 @@ local whoyougonnacall = SMODS.Consumable {
     set = "Parcel",
     name = "draft-whoyougonnacall",
     key = "whoyougonnacall",
-    pos = {x = 9, y = 1},
+    pos = { x = 9, y = 1 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 2}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2, special_amount = 3, additional_amount = 2 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_walkie_talkie
-		local amount_tenfour = 0
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_walkie_talkie
+        local amount_tenfour = 0
         local amount_else = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             if value == SMODS.Ranks["4"] or value == SMODS.Ranks["10"] then
@@ -672,9 +676,9 @@ local whoyougonnacall = SMODS.Consumable {
                 amount_else = amount_else + card.ability.extra.base_amount
             end
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount_tenfour, amount_else} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount_tenfour, amount_else } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_walkie_talkie.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_walkie_talkie.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -682,20 +686,21 @@ local whoyougonnacall = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_walkie_talkie")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount,
-            special_ranks={SMODS.Ranks["4"],SMODS.Ranks["10"]},
-            special_amount=card.ability.extra.special_amount
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount,
+            special_ranks = { SMODS.Ranks["4"], SMODS.Ranks["10"] },
+            special_amount = card.ability.extra.special_amount
         })
     end,
 }
@@ -704,20 +709,20 @@ local illicitshipment = SMODS.Consumable {
     set = "Parcel",
     name = "draft-illicitshipment",
     key = "illicitshipment",
-    pos = {x = 11, y = 0},
+    pos = { x = 11, y = 0 },
     atlas = 'parcel_atlas',
     cost = 0,
     order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 2, additional_amount = 4}},
+    config = { extra = { cost = 0, amount = 0, base_amount = 2, additional_amount = 4 } },
     loc_vars = function(self, info_queue, card)
-        info_queue[#info_queue+1] = G.P_CENTERS.j_gros_michel
-		card.ability.extra.amount = card.ability.extra.additional_amount
+        info_queue[#info_queue + 1] = G.P_CENTERS.j_gros_michel
+        card.ability.extra.amount = card.ability.extra.additional_amount
         for key, value in pairs(SMODS.Ranks) do
             card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
         end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+        return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
     end,
-	in_pool = function(self, args) return G.P_CENTERS.j_gros_michel.unlocked end,
+    in_pool = function(self, args) return G.P_CENTERS.j_gros_michel.unlocked end,
     can_use = function(self, card)
         return true
     end,
@@ -725,58 +730,59 @@ local illicitshipment = SMODS.Consumable {
         if (#G.jokers.cards < G.jokers.config.card_limit or self.area == G.jokers) then
             G.GAME.joker_buffer = G.GAME.joker_buffer + 1
             G.E_MANAGER:add_event(Event({
-                func = function() 
+                func = function()
                     local card = create_card("Joker", G.jokers, nil, nil, nil, nil, "j_gros_michel")
                     card:add_to_deck()
                     G.jokers:emplace(card)
                     card:start_materialize()
                     G.GAME.joker_buffer = 0
                     return true
-            end}))
+                end
+            }))
         end
         G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount
+            base_amount = card.ability.extra.base_amount,
+            additional_amount = card.ability.extra.additional_amount
         })
     end,
 }
 
 if Draft.config.soul_cards then
---godsend
-SMODS.Consumable {
-	set = "Spectral",
-	name = "draft-godsend",
-	key = "godsend",
-	pos = { x = 0, y = 1 },
-	soul_pos = { x = 1, y = 3 },
-	hidden = true,
-    cost=5,
-	soul_set = "Parcel",
-	atlas = 'parcel_atlas',
-    order = 1,
-    config = {extra = {cost = 0, amount = 0, base_amount = 1, additional_amount = 3, blessed_amount = 10}},
-    loc_vars = function(self, info_queue, card)
-		card.ability.extra.amount = card.ability.extra.additional_amount
-        for key, value in pairs(SMODS.Ranks) do
-            card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
-        end
-        return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.blessed_amount, card.ability.extra.amount} }
-    end,
-	in_pool = function(self, args) return G.P_CENTERS.j_gros_michel.unlocked end,
-    can_use = function(self, card)
-        return true
-    end,
-    use = function(self, card, area, copier)
-        for i = 1, card.ability.extra.blessed_amount, 1 do
-            local _card = G.FUNCS.create_playing_card_in_deck_alt({})
-            _card:set_edition(poll_edition("aura", nil, true, true), true)
-        end
-        G.FUNCS.parcel_effect(card, {
-            base_amount=card.ability.extra.base_amount,
-            additional_amount=card.ability.extra.additional_amount
-        })
-    end,
-}
+    --godsend
+    SMODS.Consumable {
+        set = "Spectral",
+        name = "draft-godsend",
+        key = "godsend",
+        pos = { x = 0, y = 1 },
+        soul_pos = { x = 1, y = 3 },
+        hidden = true,
+        cost = 5,
+        soul_set = "Parcel",
+        atlas = 'parcel_atlas',
+        order = 1,
+        config = { extra = { cost = 0, amount = 0, base_amount = 1, additional_amount = 3, blessed_amount = 10 } },
+        loc_vars = function(self, info_queue, card)
+            card.ability.extra.amount = card.ability.extra.additional_amount
+            for key, value in pairs(SMODS.Ranks) do
+                card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
+            end
+            return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.blessed_amount, card.ability.extra.amount } }
+        end,
+        in_pool = function(self, args) return G.P_CENTERS.j_gros_michel.unlocked end,
+        can_use = function(self, card)
+            return true
+        end,
+        use = function(self, card, area, copier)
+            for i = 1, card.ability.extra.blessed_amount, 1 do
+                local _card = G.FUNCS.create_playing_card_in_deck_alt({})
+                _card:set_edition(poll_edition("aura", nil, true, true), true)
+            end
+            G.FUNCS.parcel_effect(card, {
+                base_amount = card.ability.extra.base_amount,
+                additional_amount = card.ability.extra.additional_amount
+            })
+        end,
+    }
 end
 
 if BUNCOMOD then
@@ -785,35 +791,35 @@ if BUNCOMOD then
         set = "Parcel",
         name = "draft-exoticshipment",
         key = "exoticshipment",
-        pos = {x = 3, y = 0},
+        pos = { x = 3, y = 0 },
         atlas = 'cross_mod_packet_atlas',
         cost = 0,
         order = 1,
-        config = {extra = {cost = 0, base_amount = 1}},
+        config = { extra = { cost = 0, base_amount = 1 } },
         loc_vars = function(self, info_queue, card)
             local amount = 0
             for key, value in pairs(SMODS.Ranks) do
                 amount = amount + card.ability.extra.base_amount
             end
-            return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), amount} }
+            return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), amount } }
         end,
         can_use = function(self, card)
             return true
         end,
         use = function(self, card, area, copier)
             enable_exotics()
-            local exoticsuits = G.FUNCS.filter_suits({only_exotic = true})
-                assert(exoticsuits and exoticsuits ~= {}, "No exotic suits!")
+            local exoticsuits = G.FUNCS.filter_suits({ only_exotic = true })
+            assert(exoticsuits and exoticsuits ~= {}, "No exotic suits!")
             G.FUNCS.create_playing_cards_in_deck_balanced({
-                base_amount=card.ability.extra.base_amount,
-                suits=exoticsuits
+                base_amount = card.ability.extra.base_amount,
+                suits = exoticsuits
             })
-            local validsuits = G.FUNCS.filter_suits({block_exotic = true})
+            local validsuits = G.FUNCS.filter_suits({ block_exotic = true })
             --local othersuit = pseudorandom_element(validsuits, pseudoseed("exoticshipment"))
-                --Disabling this for now on the assumption that the other 13 not all being one suit is intentional
+            --Disabling this for now on the assumption that the other 13 not all being one suit is intentional
             G.FUNCS.create_playing_cards_in_deck_balanced({
-                base_amount=card.ability.extra.parcel_amount,
-                suits=validsuits
+                base_amount = card.ability.extra.parcel_amount,
+                suits = validsuits
             })
         end,
     }
@@ -822,26 +828,26 @@ if BUNCOMOD then
         set = "Parcel",
         name = "draft-polymerchains",
         key = "polymerchains",
-        pos = {x = 3, y = 1},
+        pos = { x = 3, y = 1 },
         atlas = 'cross_mod_packet_atlas',
         cost = 0,
         order = 1,
-        config = {extra = {cost = 0, amount = 0, base_amount = 2, additional_amount=4}},
+        config = { extra = { cost = 0, amount = 0, base_amount = 2, additional_amount = 4 } },
         loc_vars = function(self, info_queue, card)
             info_queue[#info_queue + 1] = { set = "Tag", key = "tag_bunc_arcade" }
             card.ability.extra.amount = 0
             for key, value in pairs(SMODS.Ranks) do
                 card.ability.extra.amount = card.ability.extra.amount + card.ability.extra.base_amount
             end
-            return { vars = {G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount} }
+            return { vars = { G.FUNCS.format_cost(card.ability.extra.cost), card.ability.extra.amount } }
         end,
         can_use = function(self, card)
             return true
         end,
         use = function(self, card, area, copier)
             G.FUNCS.parcel_effect(card, {
-                base_amount=card.ability.extra.base_amount,
-                additional_amount=card.ability.extra.additional_amount
+                base_amount = card.ability.extra.base_amount,
+                additional_amount = card.ability.extra.additional_amount
             })
             add_tag(Tag("tag_bunc_arcade"))
         end,
