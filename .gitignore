@@ -41,6 +41,8 @@ luac.out
 
 #Photoshop files
 *.psd
+#Krita files
+*.kra
 
 #.ignore files
 .lovelyignore
