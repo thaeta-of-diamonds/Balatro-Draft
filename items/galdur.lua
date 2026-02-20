@@ -301,10 +301,13 @@ end
 local card_click_ref = Card.click
 function Card:click()
     if self.params.draft_mode_selector and not self.params.draft_mode_locked then
+        local refresh = G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode].key ~= G.viewed_draft_mode
         Galdur.run_setup.choices.draft_mode = G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode].key
         G.E_MANAGER:clear_queue('galdur')
         G.FUNCS.change_draft_mode { to_key = self.params.draft_mode }
-        G.FUNCS.change_draft_mode_page {to = Draft.draft_mode_page}
+        if refresh then
+            G.FUNCS.change_draft_mode_page {to = Draft.draft_mode_page}
+        end
     else
         card_click_ref(self)
     end
@@ -329,7 +332,7 @@ end
 
 
 local function deck_select_page_draft_mode()
-    G.FUNCS.change_draft_mode { key = G.viewed_draft_mode or G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or "mode_draft_casl_none" }
+    G.FUNCS.change_draft_mode { key = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or "mode_draft_casl_none" }
     Galdur.include_deck_preview()
     Galdur.include_chip_tower()
     generate_draft_mode_card_areas()
@@ -371,9 +374,7 @@ end
 
 
 local function quick_start_text()
-    if not quick_start_draft_node then
-        quick_start_draft_node = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or "mode_draft_casl_none"
-    end
+    quick_start_draft_node = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or Galdur.run_setup.choices.draft_mode or "mode_draft_casl_none" 
     local draft_mode_center = Draft.Draft_Mode:get_obj(quick_start_draft_node)
     if draft_mode_center then
         local ret_nodes, full_UI_table = {}, {}
