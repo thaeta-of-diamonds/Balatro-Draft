@@ -1,8 +1,4 @@
--- GALDUR (1.1.4+) COMPATIBILITY
-local min_galdur_version = '1.1.4'
 local quick_start_draft_node = nil
-
-local hovered_draft_mode = nil
 
 local function populate_info_queue(set, key)
     -- direct copy from galdur, but I need it outside of galdur
