@@ -2,21 +2,21 @@ return {
     descriptions = {
         Draft_Mode = {
             mode_draft_casl_none = {
-                name = "Standard Deck",
-                text = { "No drafting." }
+                name = "Standard",
+                text = { 
+                    "No special deck construction"
+                }
             },
             mode_draft_draft = {
                 name = "Draft",
                 text = {
-                    "Start run with no deck",
-                    "and {C:attention}#1# {C:packet}Draft Tags{}",
+                    "Start run with no deck and {C:attention}#1# {C:packet}Draft Tags{}",
                 },
             },
             mode_draft_sealed = {
                 name = "Sealed",
                 text = {
-                    "Start run with no deck",
-                    "and {C:attention}#1# {C:parcel}Sealed Tag{}",
+                    "Start run with no deck and {C:attention}#1# {C:parcel}Sealed Tag{}",
                 },
             },
         },
@@ -1016,6 +1016,11 @@ return {
             k_unavailable = "Unavailable",
             mode_not_found_error = "Mode could not be found! Did you remove its mod?",
 
+            k_draft_draft_mode = "Draft",
+
+            gald_draft_mode = "Select Draft",
+            gald_random_draft_mode = "Random Draft",
+
             neutral_packet_collation = "Neutral Packet Collation",
             neutral_packet_collation_desc = {
                 "Draft Crates will always contain",
@@ -1030,6 +1035,12 @@ return {
             soul_cards_desc = {
                 "Include Soul cards for",
                 "Packets, Parcels and Clippers",
+                "(Requires restart)"
+            },
+            run_option = "Draft Run Option",
+            run_option_desc = {
+                "Include draft versions as",
+                "separate run options",
                 "(Requires restart)"
             },
         },

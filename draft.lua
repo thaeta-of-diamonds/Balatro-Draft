@@ -1,12 +1,12 @@
 ----------------------------------------------
 ------------MOD CODE -------------------------
 
-SMODS.Atlas({
+SMODS.Atlas {
 	key = "modicon",
 	path = "icon.png",
 	px = 32,
 	py = 32,
-}):register()
+}
 
 SMODS.Atlas {
 	object_type = "Atlas",
@@ -79,7 +79,12 @@ assert(SMODS.load_file("items/packets.lua"))()
 assert(SMODS.load_file("items/parcels.lua"))()
 assert(SMODS.load_file("items/clippers.lua"))()
 assert(SMODS.load_file("items/packs.lua"))()
---assert(SMODS.load_file("items/draft_modes.lua"))()
+if Draft.config.run_option then
+	assert(SMODS.load_file("items/draft_modes.lua"))()
+	if Galdur then
+		assert(SMODS.load_file("items/galdur.lua"))()
+	end
+end
 assert(SMODS.load_file("items/ui.lua"))()
 assert(SMODS.load_file("items/decks.lua"))()
 assert(SMODS.load_file("items/sleeves.lua"))()

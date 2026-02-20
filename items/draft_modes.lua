@@ -28,7 +28,7 @@ end
 
 function Draft.Draft_Mode:is_unlocked()
     -- Checks self.unlocked, Draft config, and basegame Unlock All. Use this to read self.unlocked unless you know what you're doing
-    return self.unlocked or Draft.config.allow_any_draft_mode_selection or G.PROFILES[G.SETTINGS.profile].all_unlocked
+    return self.unlocked or G.PROFILES[G.SETTINGS.profile].all_unlocked
 end
 
 function Draft.Draft_Mode:generate_ui(info_queue, card, desc_nodes, specific_vars, full_UI_table)
@@ -55,16 +55,16 @@ end
 
 Draft.Draft_Mode {
     key = "casl_none",
-    name = "Standard Deck",
-    atlas = "pack_atlas",
-    pos = { x = 4, y = 3 },
+    name = "Standard",
+    atlas = "tag_atlas",
+    pos = { x = 5, y = 0 },
     config = {},
 }
 
 Draft.Draft_Mode({
     key = "draft",
     name = "draft-mode-draft",
-    atlas = "pack_atlas",
+    atlas = "tag_atlas",
     pos = { x = 0, y = 0 },
     config = { num_packs = 10 },
     unlocked = true,
@@ -90,8 +90,8 @@ Draft.Draft_Mode({
 Draft.Draft_Mode({
     key = "sealed",
     name = "draft-mode-sealed",
-    atlas = "pack_atlas",
-    pos = { x = 0, y = 0 },
+    atlas = "tag_atlas",
+    pos = { x = 3, y = 0 },
     config = { num_packs = 1 },
     unlocked = true,
     loc_vars = function(self)
@@ -159,8 +159,13 @@ end
 -- Global Functions
 
 function G.FUNCS.change_draft_mode(args)
-    local mode_center = G.P_CENTER_POOLS.Draft_Mode[args.to_key]
-    G.viewed_mode = mode_center.key
+    local mode_center
+    if args.to_key ~= nil then
+        mode_center = G.P_CENTER_POOLS.Draft_Mode[args.to_key]
+    else
+        mode_center = Draft.Draft_Mode:get_obj(args.key)
+    end
+    G.viewed_draft_mode = mode_center.key
     G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode = mode_center.key
     if mode_center["loc_vars"] then
         mode_center:loc_vars()
@@ -183,7 +188,7 @@ function G.UIDEF.draft_mode_description(mode_key, minw)
                 n = 1,
             } },
             { {
-                config = { scale = 0.32, colour = G.C.BLACK, text = "(DEBUG: key = '" .. tprint(G.viewed_mode) .. "')", },
+                config = { scale = 0.32, colour = G.C.BLACK, text = "(DEBUG: key = '" .. tprint(G.viewed_draft_mode) .. "')", },
                 n = 1,
             } },
         }
@@ -212,7 +217,7 @@ function G.UIDEF.draft_mode_description(mode_key, minw)
             },
             {
                 n = G.UIT.R,
-                config = { align = "cm", padding = 0.03, colour = G.C.WHITE, r = 0.1, minh = 1, minw = minw },
+                config = { align = "cm", padding = 0.03, colour = G.C.WHITE, r = 0.1, minh = 0.5, minw = minw },
                 nodes = desc_t
             }
         }
@@ -222,7 +227,7 @@ end
 function G.UIDEF.draft_mode_option(_type)
     local middle = {
         n = G.UIT.R,
-        config = { align = "cm", minh = 1.7, minw = 7.3 },
+        config = { align = "cm", minh = 1.2, minw = 7.3 },
         nodes = {
             { n = G.UIT.O, config = { id = nil, func = 'RUN_SETUP_check_draft_mode2', object = Moveable() } },
         }
@@ -232,7 +237,7 @@ function G.UIDEF.draft_mode_option(_type)
     for i, v in pairs(G.P_CENTER_POOLS.Draft_Mode) do
         -- if v.unlocked then
         table.insert(draft_options, v)
-        if v.key == G.viewed_mode then
+        if v.key == G.viewed_draft_mode then
             current_draft_mode_index = i
         end
     end
@@ -251,8 +256,20 @@ function G.UIDEF.draft_mode_option(_type)
     }
 end
 
+function get_draft_mode_sprite(_draft_mode, _scale)
+    _draft_mode = _draft_mode or 1
+    local draft_mode = Draft.Draft_Mode:get_obj(_draft_mode)
+    _scale = _scale or 1
+    local draft_mode_sprite = Sprite(0, 0, _scale * 1, _scale * 1, G.ASSET_ATLAS[draft_mode.atlas], draft_mode.pos)
+    draft_mode_sprite.states.drag.can = false
+    return draft_mode_sprite
+end
+
 function G.UIDEF.viewed_draft_mode_option()
-    G.viewed_mode = G.viewed_mode or "mode_draft_casl_none"
+    G.viewed_draft_mode = G.viewed_draft_mode or "mode_draft_casl_none"
+
+    local draft_mode_sprite = get_draft_mode_sprite(G.viewed_draft_mode)
+
 
     return {
         n = G.UIT.ROOT,
@@ -262,14 +279,21 @@ function G.UIDEF.viewed_draft_mode_option()
                 n = G.UIT.C,
                 config = { align = "cm", padding = 0 },
                 nodes = {
-                    { n = G.UIT.T, config = { text = "Draft Mode", scale = 0.3, colour = G.C.L_BLACK } }
+                    { n = G.UIT.T, config = { text = localize('k_draft_draft_mode'), scale = 0.4, colour = G.C.L_BLACK, vert = true } }
                 }
             },
             {
                 n = G.UIT.C,
                 config = { align = "cm", padding = 0.1 },
                 nodes = {
-                    G.UIDEF.draft_mode_description(G.viewed_mode, 5.5)
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0 },
+                        nodes = {
+                            { n = G.UIT.O, config = { colour = G.C.BLUE, object = draft_mode_sprite, hover = true, can_collide = false } },
+                        }
+                    },
+                    G.UIDEF.draft_mode_description(G.viewed_draft_mode, 5.5)
                 }
             }
         }
@@ -288,13 +312,13 @@ G.FUNCS.RUN_SETUP_check_draft_mode = function(e)
 end
 
 G.FUNCS.RUN_SETUP_check_draft_mode2 = function(e)
-    if (G.viewed_mode ~= e.config.id) then
+    if (G.viewed_draft_mode ~= e.config.id) then
         e.config.object:remove()
         e.config.object = UIBox {
             definition = G.UIDEF.viewed_draft_mode_option(),
             config = { offset = { x = 0, y = 0 }, align = 'cm', parent = e }
         }
-        e.config.id = G.viewed_mode
+        e.config.id = G.viewed_draft_mode
     end
 end
 
@@ -303,7 +327,7 @@ function Game:init_game_object(...)
     local output = old_Game_init_game_object(self, ...)
     local is_challenge = Draft.game_args.challenge and Draft.game_args.challenge.id -- HouseRules compat
     if not is_challenge then
-        output.draft_selected_mode = G.viewed_mode or "draft_mode"
+        output.draft_selected_mode = G.viewed_draft_mode or "draft_mode"
     elseif is_challenge and Draft.game_args.challenge.draft_mode then
         output.draft_selected_mode = Draft.game_args.challenge.draft_mode
     else
@@ -316,14 +340,14 @@ local old_uidef_run_setup_option = G.UIDEF.run_setup_option
 function G.UIDEF.run_setup_option(_type)
     local output = old_uidef_run_setup_option(_type)
     if _type == "Continue" then
-        G.viewed_mode = "mode_draft_casl_none"
+        G.viewed_draft_mode = "mode_draft_casl_none"
         if G.SAVED_GAME ~= nil then
-            G.viewed_mode = saved_game.GAME.draft_selected_mode or G.viewed_mode
+            G.viewed_draft_mode = saved_game.GAME.draft_selected_mode or G.viewed_draft_mode
         end
         table.insert(output.nodes, 2,
             {
                 n = G.UIT.R,
-                config = { align = "cm", padding = 0.05, minh = 1.65 },
+                config = { align = "cm", padding = 0.05, minh = 1.15 },
                 nodes = {
                     {
                         n = G.UIT.O,
@@ -332,11 +356,12 @@ function G.UIDEF.run_setup_option(_type)
                 }
             })
     elseif _type == "New Run" then
-        G.viewed_mode = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or G.viewed_mode or "mode_draft_casl_none"
+        G.viewed_draft_mode = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or G.viewed_draft_mode or
+            "mode_draft_casl_none"
         table.insert(output.nodes, 2,
             {
                 n = G.UIT.R,
-                config = { align = "cm", minh = 1.65, minw = 6.8 },
+                config = { align = "cm", minh = 1.15, minw = 6.8 },
                 nodes = {
                     {
                         n = G.UIT.O,
