@@ -372,7 +372,7 @@ end
 
 local function quick_start_text()
     if not quick_start_draft_node then
-        quick_start_draft_node = G.viewed_draft_mode or G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or "casl_none"
+        quick_start_draft_node = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or "mode_draft_casl_none"
     end
     local draft_mode_center = Draft.Draft_Mode:get_obj(quick_start_draft_node)
     if draft_mode_center then
