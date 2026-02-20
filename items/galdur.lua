@@ -82,77 +82,77 @@ function Card:hover()
 
 
         self.config.h_popup = self.params.draft_mode_locked and
-        {
-            n = G.UIT.ROOT,
-            config = { align = "cm", colour = G.C.BLACK, r = 0.1, padding = 0.1, outline = 1 },
-            nodes = {
-                {
-                    n = G.UIT.C,
-                    config = { align = "cm", padding = 0.05, r = 0.1, colour = G.C.L_BLACK },
-                    nodes = {
-                        {
-                            n = G.UIT.R,
-                            config = { align = "cm", padding = 0 },
-                            nodes = {
-                                { n = G.UIT.T, config = { text = localize('gald_locked'), scale = 0.4, colour = G.C.WHITE } }
+            {
+                n = G.UIT.ROOT,
+                config = { align = "cm", colour = G.C.BLACK, r = 0.1, padding = 0.1, outline = 1 },
+                nodes = {
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.05, r = 0.1, colour = G.C.L_BLACK },
+                        nodes = {
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm", padding = 0 },
+                                nodes = {
+                                    { n = G.UIT.T, config = { text = localize('gald_locked'), scale = 0.4, colour = G.C.WHITE } }
+                                }
+                            },
+                            {
+                                n = G.UIT.R,
+                                config = { align = "cm", padding = 0.03, colour = G.C.WHITE, r = 0.1, minh = 1, minw = 3.5 },
+                                nodes =
+                                    create_draft_mode_unlock_message(G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode])
                             }
-                        },
-                        {
-                            n = G.UIT.R,
-                            config = { align = "cm", padding = 0.03, colour = G.C.WHITE, r = 0.1, minh = 1, minw = 3.5 },
-                            nodes =
-                                create_draft_mode_unlock_message(G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode])
+                        }
+                    }
+                }
+            } or {
+                n = G.UIT.ROOT,
+                config = { align = 'cm', colour = G.C.CLEAR },
+                nodes = {
+                    { n = G.UIT.R, config = { align = 'cm', padding = 0.1 }, nodes = tooltips },
+                    {
+                        n = G.UIT.C,
+                        config = { align = "cm", padding = 0.1, colour = G.C.BLACK, r = 0.1, outline = 1 },
+                        nodes = {
+                            {
+                                n = G.UIT.R,
+                                nodes = {
+                                    {
+                                        n = G.UIT.C,
+                                        config = { align = "cm", padding = 0 },
+                                        nodes = {
+                                            { n = G.UIT.T, config = { text = localize('k_draft_draft_mode'), scale = 0.4, colour = G.C.L_BLACK, vert = true } }
+                                        }
+                                    },
+                                    {
+                                        n = G.UIT.C,
+                                        config = { align = "cm", padding = 0 },
+                                        nodes = {
+                                            { n = G.UIT.O, config = { colour = G.C.BLUE, object = get_draft_mode_sprite(G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode].key), hover = true, can_collide = false } },
+                                        }
+                                    },
+                                    {
+                                        n = G.UIT.C,
+                                        config = { align = "cm", padding = 0 },
+                                        nodes = {
+                                            G.UIDEF.draft_mode_description(G.P_CENTER_POOLS.Draft_Mode
+                                                [self.params.draft_mode].key)
+                                        }
+                                    }
+                                }
+                            },
+                            badges.nodes[1] and {
+                                n = G.UIT.R,
+                                config = { align = "cm" },
+                                nodes = {
+                                    { n = G.UIT.O, config = { object = UIBox { definition = badges, config = { offset = { x = 0, y = 0 } } } } }
+                                }
+                            },
                         }
                     }
                 }
             }
-        } or {
-            n = G.UIT.ROOT,
-            config = { align = 'cm', colour = G.C.CLEAR },
-            nodes = {
-                { n = G.UIT.R, config = { align = 'cm', padding = 0.1 }, nodes = tooltips },
-                {
-                    n = G.UIT.C,
-                    config = { align = "cm", padding = 0.1, colour = G.C.BLACK, r = 0.1, outline = 1 },
-                    nodes = {
-                        {
-                            n = G.UIT.R,
-                            nodes = {
-                                {
-                                    n = G.UIT.C,
-                                    config = { align = "cm", padding = 0 },
-                                    nodes = {
-                                        { n = G.UIT.T, config = { text = localize('k_draft_draft_mode'), scale = 0.4, colour = G.C.L_BLACK, vert = true } }
-                                    }
-                                },
-                                {
-                                    n = G.UIT.C,
-                                    config = { align = "cm", padding = 0 },
-                                    nodes = {
-                                        { n = G.UIT.O, config = { colour = G.C.BLUE, object = get_draft_mode_sprite(G.P_CENTER_POOLS.Draft_Mode[self.params.draft_mode].key), hover = true, can_collide = false } },
-                                    }
-                                },
-                                {
-                                    n = G.UIT.C,
-                                    config = { align = "cm", padding = 0 },
-                                    nodes = {
-                                        G.UIDEF.draft_mode_description(G.P_CENTER_POOLS.Draft_Mode
-                                        [self.params.draft_mode].key)
-                                    }
-                                }
-                            }
-                        },
-                        badges.nodes[1] and {
-                            n = G.UIT.R,
-                            config = { align = "cm" },
-                            nodes = {
-                                { n = G.UIT.O, config = { object = UIBox { definition = badges, config = { offset = { x = 0, y = 0 } } } } }
-                            }
-                        },
-                    }
-                }
-            }
-        }
 
         self.config.h_popup_config = self:align_h_popup()
         Node.hover(self)
@@ -213,7 +213,7 @@ local function get_draft_mode_sprite_in_area(_draft_mode, _scale, _area)
         draft_mode_sprite.draw = function(_sprite)
             _sprite.ARGS.send_to_shader = _sprite.ARGS.send_to_shader or {}
             _sprite.ARGS.send_to_shader[1] = math.min(_sprite.VT.r * 3, 1) + G.TIMERS.REAL / (18) +
-            (_sprite.juice and _sprite.juice.r * 20 or 0) + 1
+                (_sprite.juice and _sprite.juice.r * 20 or 0) + 1
             _sprite.ARGS.send_to_shader[2] = G.TIMERS.REAL
 
             Sprite.draw_shader(_sprite, 'dissolve')
@@ -223,7 +223,7 @@ local function get_draft_mode_sprite_in_area(_draft_mode, _scale, _area)
         draft_mode_sprite.draw = function(_sprite)
             _sprite.ARGS.send_to_shader = _sprite.ARGS.send_to_shader or {}
             _sprite.ARGS.send_to_shader[1] = math.min(_sprite.VT.r * 3, 1) + G.TIMERS.REAL / (18) +
-            (_sprite.juice and _sprite.juice.r * 20 or 0) + 1
+                (_sprite.juice and _sprite.juice.r * 20 or 0) + 1
             _sprite.ARGS.send_to_shader[2] = G.TIMERS.REAL
 
             Sprite.draw_self(_sprite, G.C.L_BLACK)
@@ -289,8 +289,12 @@ local function generate_draft_mode_card_areas_ui()
 
     populate_draft_mode_card_areas(1)
 
-    return { n = G.UIT.R, config = { align = "cm", minh = 0.45 + G.CARD_H + G.CARD_H, minw = 10.7, colour = G.C.BLACK, padding = 0.15, r = 0.1, emboss = 0.05 }, nodes =
-    draft_mode_ui_element }
+    return {
+        n = G.UIT.R,
+        config = { align = "cm", minh = 0.45 + G.CARD_H + G.CARD_H, minw = 10.7, colour = G.C.BLACK, padding = 0.15, r = 0.1, emboss = 0.05 },
+        nodes =
+            draft_mode_ui_element
+    }
 end
 
 G.FUNCS.change_draft_mode_page = function(args)
@@ -306,7 +310,7 @@ function Card:click()
         G.E_MANAGER:clear_queue('galdur')
         G.FUNCS.change_draft_mode { to_key = self.params.draft_mode }
         if refresh then
-            G.FUNCS.change_draft_mode_page {to = Draft.draft_mode_page}
+            G.FUNCS.change_draft_mode_page { to = Draft.draft_mode_page }
         end
     else
         card_click_ref(self)
@@ -374,7 +378,8 @@ end
 
 
 local function quick_start_text()
-    quick_start_draft_node = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or Galdur.run_setup.choices.draft_mode or "mode_draft_casl_none" 
+    quick_start_draft_node = G.PROFILES[G.SETTINGS.profile].MEMORY.draft_mode or Galdur.run_setup.choices.draft_mode or
+        "mode_draft_casl_none"
     local draft_mode_center = Draft.Draft_Mode:get_obj(quick_start_draft_node)
     if draft_mode_center then
         local ret_nodes, full_UI_table = {}, {}
